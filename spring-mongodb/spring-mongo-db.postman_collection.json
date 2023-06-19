@@ -1,0 +1,75 @@
+{
+	"info": {
+		"_postman_id": "664b43bf-6458-4aef-a13c-769b1cef8659",
+		"name": "spring-mongo-db",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19626255"
+	},
+	"item": [
+		{
+			"name": "Criar - funcionario",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nome\":\"Fulando\",\r\n    \"idade\": 23,\r\n    \"salario\": 2000\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8001/funcionarios",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"funcionarios"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Listar - funcionarios",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8001/funcionarios",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"funcionarios"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar por Id - funcionario",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8001/funcionarios/6490d6686e035e619aaed267",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"funcionarios",
+						"6490d6686e035e619aaed267"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
