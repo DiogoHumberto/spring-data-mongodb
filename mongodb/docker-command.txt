@@ -1,2 +1,5 @@
-#Usando powerShell
+#Usando powerShell - subindo mongodb 
 docker run --name mongodb -d -p 27017:27017 -v ${pwd}/data:/data/db mongodb/mongodb-community-server:latest
+
+
+docker run --name db-postgres -e POSTGRES_USER=docker -e POSTGRES_PASSWORD=docker -e POSTGRES_DB=docker -d -p 5432:5432 library/postgres
