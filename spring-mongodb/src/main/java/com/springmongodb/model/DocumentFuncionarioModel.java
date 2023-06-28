@@ -10,7 +10,7 @@ import lombok.Data;
 
 @Data 
 @Document
-public class FuncionarioModel {
+public class DocumentFuncionarioModel {
 	
 	@Id
 	private String id;
@@ -22,6 +22,6 @@ public class FuncionarioModel {
 	private BigDecimal salario;
 	
 	@DBRef
-	private FuncionarioModel chefe;
+	private DocumentFuncionarioModel chefe;
 
 }

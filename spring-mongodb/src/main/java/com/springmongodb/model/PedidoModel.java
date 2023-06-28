@@ -43,7 +43,5 @@ public class PedidoModel {
 	
 	@Column(name = "descricao", columnDefinition = "TEXT")
 	private String descricao;
-	
-	private DocumentNfeXml nfeXml;	
 
 }

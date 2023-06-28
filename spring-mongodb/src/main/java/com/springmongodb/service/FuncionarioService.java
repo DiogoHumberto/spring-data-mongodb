@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.springmongodb.model.FuncionarioModel;
-import com.springmongodb.repository.FuncionarioRepository;
+import com.springmongodb.model.DocumentFuncionarioModel;
+import com.springmongodb.repository.DocumentFuncionarioRepository;
 
 import lombok.RequiredArgsConstructor;
 
@@ -13,21 +13,21 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class FuncionarioService {
 
-	private final FuncionarioRepository funcionarioRepository;
+	private final DocumentFuncionarioRepository funcionarioRepository;
 
-	public List<FuncionarioModel> listar() {
+	public List<DocumentFuncionarioModel> listar() {
 
 		return this.funcionarioRepository.findAll();
 
 	}
 
-	public FuncionarioModel obterPorId(String id) {
+	public DocumentFuncionarioModel obterPorId(String id) {
 
 		return this.funcionarioRepository.findById(id)
 				.orElseThrow(() -> new IllegalArgumentException("código não existe!"));
 	}
 
-	public FuncionarioModel criar(FuncionarioModel funcionario) {
+	public DocumentFuncionarioModel criar(DocumentFuncionarioModel funcionario) {
 		
 		if(funcionario.getChefe() != null && !funcionario.getChefe().getId().isBlank()) {
 			
