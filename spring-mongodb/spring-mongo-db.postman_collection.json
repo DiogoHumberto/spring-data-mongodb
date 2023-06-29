@@ -1,13 +1,40 @@
 {
 	"info": {
-		"_postman_id": "664b43bf-6458-4aef-a13c-769b1cef8659",
+		"_postman_id": "4276059d-f055-4e13-93ed-18425410d5b1",
 		"name": "spring-mongo-db",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "19626255"
+		"_exporter_id": "28237617"
 	},
 	"item": [
 		{
 			"name": "Criar - funcionario",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nome\":\"Fulando\",\r\n    \"idade\": 23,\r\n    \"salario\": 2000\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8001/funcionarios",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"funcionarios"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Criar - funcionario -com chefe",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -66,6 +93,99 @@
 					"path": [
 						"funcionarios",
 						"6490d6686e035e619aaed267"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Criar - Pedido",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "multipart/form-data",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"contentType": "multipart/form-data",
+							"type": "file",
+							"src": "/C:/Users/diogo.bosco/Downloads/35150300822602000124550010009923461099234656-nfe.xml"
+						},
+						{
+							"key": "pedido",
+							"value": "{\n    \"numpedcomp\" : 123,\n    \"dtPedido\" :\"28-03-2023 14:14:00\",\n    \"vlTotal\" : 200.1,\n    \"descricao\" : \"teste\"\n}",
+							"contentType": "application/json",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8001/pedidos",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"pedidos"
+					],
+					"query": [
+						{
+							"key": "file",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Download - base 64- Pedido",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8001/pedidos/2582",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"pedidos",
+						"2582"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar - Pedido",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8001/pedidos?numpedcomp=25",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8001",
+					"path": [
+						"pedidos"
+					],
+					"query": [
+						{
+							"key": "numpedcomp",
+							"value": "25"
+						}
 					]
 				}
 			},
