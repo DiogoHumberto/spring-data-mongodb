@@ -1,11 +1,16 @@
 package com.springmongodb.controller;
 
 import java.io.IOException;
+import java.util.Base64;
 
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
@@ -35,10 +40,28 @@ public class PedidoController {
 		var uriCreate = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(pedidoVo.getNumpedcomp())
 				.toUri();
 
-		//URI uri = uriBuilder.path("/funcionarios/{id}").buildAndExpand(respDto.getId()).toUri();
-
 		return ResponseEntity.created(uriCreate).body(pedidoVo);
 
 	}
+	
+	@GetMapping("/{numpedcomp}")
+	public ResponseEntity<String> downloadNfe(@PathVariable @NotNull Integer numpedcomp){
+		
+		var documentNfe = pedidoService.downloadFileNfe(numpedcomp);
+		
+		String outResource = Base64.getEncoder().encodeToString(documentNfe.getFileXml().getData());
+		
+		return ResponseEntity.ok()
+				.contentType(MediaType.APPLICATION_OCTET_STREAM)
+				.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + documentNfe.getFileName())
+				.body(outResource);
+	}
+	
+	@GetMapping()
+	public ResponseEntity<PedidoDto> buscar(@RequestParam( value = "numpedcomp", required = true) Integer numpedcomp){
+				
+		return ResponseEntity.ok(pedidoService.buscar(numpedcomp));
+	}
+	
 
 }
